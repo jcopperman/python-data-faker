@@ -111,7 +111,7 @@ for val in range(100):
         "PhoneNumber": generate_phone_number(),  # Generate a phone number with 9 digits and no special characters
         "Country": "South Africa",  # Set the default country as South Africa
         "Text": fake.text(),
-        "Date": fake.date(),
+        "CreatedDate": fake.date(),
         "VisaCardNumber": generate_test_card_number("visa"),  # Generate a Visa test card number
         "MastercardNumber": generate_test_card_number("mastercard"),  # Generate a Mastercard test card number
         "AccountBalance": generate_account_balance(),  # Generate an account balance
@@ -130,7 +130,7 @@ for val in range(100):
         "PhoneNumber": generate_phone_number(),  # Generate a phone number with 9 digits and no special characters
         "Country": "Namibia",  # Set the default country as Namibia
         "Text": fake.text(),
-        "Date": fake.date(),
+        "CreatedDate": fake.date(),
         "VisaCardNumber": generate_test_card_number("visa"),  # Generate a Visa test card number
         "MastercardNumber": generate_test_card_number("mastercard"),  # Generate a Mastercard test card number
         "AccountBalance": generate_account_balance(),  # Generate an account balance
@@ -257,7 +257,6 @@ for val in range(100):
         "Lastname": fake.last_name(),
         "PhoneNumber": generate_phone_number(),  # Generate a phone number with 9 digits and no special characters
         "Country": "South Africa",  # Set the default country as South Africa
-        "Text": fake.text(),
         "Date": fake.date(),
         "VisaCardNumber": generate_test_card_number("visa"),  # Generate a Visa test card number
         "MastercardNumber": generate_test_card_number("mastercard"),  # Generate a Mastercard test card number
@@ -276,7 +275,6 @@ for val in range(100):
         "Lastname": fake.last_name(),
         "PhoneNumber": generate_phone_number(),  # Generate a phone number with 9 digits and no special characters
         "Country": "Namibia",  # Set the default country as Namibia
-        # "Text": fake.text(),
         "Date": fake.date(),
         "VisaCardNumber": generate_test_card_number("visa"),  # Generate a Visa test card number
         "MastercardNumber": generate_test_card_number("mastercard"),  # Generate a Mastercard test card number
