@@ -44,7 +44,7 @@ def generate_sa_id_number(gender):
         random_gender_digits = str(random.randint(0, 4999)).zfill(4)  # Generate 4 random digits for females
     else:
         random_gender_digits = str(random.randint(5000, 9999)).zfill(4)  # Generate 4 random digits for males
-    citizenship_and_checksum = str(random.randint(0, 999)).zfill(3)  # Generate 3 digits for race and sex
+    citizenship_and_checksum = str(random.randint(0, 999)).zfill(3)  # Generate 3 digits for citizenship and checksup
 
     id_number = birth_date + random_gender_digits + citizenship_and_checksum
 
@@ -189,7 +189,7 @@ def generate_sa_id_number(gender):
         random_gender_digits = str(random.randint(0, 4999)).zfill(4)  # Generate 4 random digits for females
     else:
         random_gender_digits = str(random.randint(5000, 9999)).zfill(4)  # Generate 4 random digits for males
-    citizenship_and_checksum = str(random.randint(0, 999)).zfill(3)  # Generate 3 digits for race and sex
+    citizenship_and_checksum = str(random.randint(0, 999)).zfill(3)  # Generate 3 digits for citizenship and checksum
 
     id_number = birth_date + random_gender_digits + citizenship_and_checksum
 
