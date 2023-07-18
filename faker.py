@@ -8,10 +8,10 @@ fake = Faker(["en_US"])  # Set the locale to United States (English)
 def generate_sa_id_number():
     # Generate valid South African ID number
     birth_date = fake.date_of_birth().strftime("%y%m%d")  # Get birth date in YYMMDD format
-    random_digits = str(random.randint(0, 9999)).zfill(4)  # Generate 4 random digits
-    race_and_sex = str(random.randint(0, 999)).zfill(3)  # Generate 3 digits for race and sex
+    gender_digits = str(random.randint(0, 9999)).zfill(4)  # Generate 4 random digits
+    citizen_checksum = str(random.randint(0, 999)).zfill(3)  # Generate 3 digits for race and sex
 
-    id_number = birth_date + random_digits + race_and_sex
+    id_number = birth_date + gender_digits + citizen_checksum
 
     return id_number
 
