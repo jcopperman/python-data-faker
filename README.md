@@ -1,7 +1,9 @@
 # python-data-faker
 Python script for generating fake data for testing using [Faker](https://faker.readthedocs.io/en/master/) including valid SA & Namabian ID numbers, VISA and Mastercard test credit card numbers and formatted South African phone numbers, provinces and regions (region dependant, returns null).
 
-Generates 100 each of SA and Namabian test objects into JSON
+Generates 100 each of SA and Namabian test objects into JSON output
+
+## Example Output
 
 ```
 {
