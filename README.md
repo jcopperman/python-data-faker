@@ -5,4 +5,5 @@ Generates 100 each of SA and Namabian test objects into JSON
 
 ## Pre-requisites
 - Version: `Python 3.11.2`
+- [Python installation guide](https://wiki.python.org/moin/BeginnersGuide/Download) 
 - Install faker with `pip install faker`
