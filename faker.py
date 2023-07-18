@@ -4,6 +4,7 @@ import random
 
 # Initialize Faker
 fake = Faker()
+Faker.seed(1234)  # Set the seed for Faker
 
 # List of South African provinces
 provinces = [
@@ -68,7 +69,7 @@ for val in range(100):
         "Name": fake.name(),
         "Lastname": fake.last_name(),
         "PhoneNumber": generate_phone_number(),  # Generate a phone number with 9 digits and no special characters
-        "Country": fake.country(),
+        "Country": "South Africa",  # Set the default country as South Africa
         "Text": fake.text(),
         "Date": fake.date(),
         "VisaCardNumber": generate_test_card_number("visa"),  # Generate a Visa test card number
@@ -90,6 +91,7 @@ import random
 
 # Initialize Faker
 fake = Faker()
+Faker.seed(1234)  # Set the seed for Faker
 
 # List of South African provinces
 provinces = [
@@ -154,13 +156,13 @@ for val in range(100):
         "Name": fake.name(),
         "Lastname": fake.last_name(),
         "PhoneNumber": generate_phone_number(),  # Generate a phone number with 9 digits and no special characters
-        "Country": fake.country(),
+        "Country": "South Africa",  # Set the default country as South Africa
         "Text": fake.text(),
         "Date": fake.date(),
         "VisaCardNumber": generate_test_card_number("visa"),  # Generate a Visa test card number
         "MastercardNumber": generate_test_card_number("mastercard"),  # Generate a Mastercard test card number
         "AccountBalance": generate_account_balance(),  # Generate an account balance
-        "Province": generate_province(),  # GenerateA a random province
+        "Province": generate_province(),  # Generate a random province
         "PostalCode": generate_postal_code(),  # Generate a random postal code
     }
     data.append(item)
