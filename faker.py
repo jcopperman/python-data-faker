@@ -1,6 +1,7 @@
 import json
 from faker import Faker
 import random
+from datetime import datetime
 
 # Initialize Faker
 fake = Faker()
@@ -207,6 +208,23 @@ def generate_na_id_number(gender):
     id_number = birth_date + str(random_gender_digit) + random_digits
 
     return id_number
+
+def calculate_age(id_number):
+    # Calculate age based on the ID number and current date
+    birth_year = int(id_number[0:2])
+    current_year = datetime.now().year
+    current_month = datetime.now().month
+    current_day = datetime.now().day
+    birth_century = current_year // 100
+    birth_year += birth_century * 100
+    birth_month = int(id_number[2:4])
+    birth_day = int(id_number[4:6])
+    age = current_year - birth_year
+    if current_month < birth_month:
+        age -= 1
+    elif current_month == birth_month and current_day < birth_day:
+        age -= 1
+    return age
 
 def generate_phone_number():
     # Generate phone number with 9 digits and no special characters
