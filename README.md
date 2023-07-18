@@ -4,5 +4,5 @@ Python script for generating fake data for testing including valid SA & Namabian
 Generates 100 each of SA and Namabian test objects into JSON
 
 ## Pre-requisites
-Version: `Python 3.11.2`
-Install faker with `pip install faker`
+- Version: `Python 3.11.2`
+- Install faker with `pip install faker`
