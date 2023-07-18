@@ -3,7 +3,9 @@ from faker import Faker
 import random
 
 # Initialize Faker
-fake = Faker(["en_US"])  # Set the locale to United States (English)
+fake = Faker(["en_US"])  # Set the locale to United States (English) - Breaks when using en_ZA
+
+# Todo add test credit card number generation
 
 def generate_sa_id_number():
     # Generate valid South African ID number
@@ -23,8 +25,12 @@ for val in range(100):
         "ID": generate_sa_id_number(),  # Generate a unique and valid South African ID number
         "Name": fake.name(),
         "Lastname": fake.last_name(),
+        #Todo - clean up formatting
         "PhoneNumber": fake.phone_number(),
         "Country": fake.country(),
+        #Todo add province and post code
+        "Province": fake.province(),
+        "Postcode": fake.postcode(),
         "Text": fake.text(),
         "Date": fake.date()
     }
