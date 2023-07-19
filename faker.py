@@ -1,7 +1,7 @@
 import json
 from faker import Faker
 import random
-import datetime
+from datetime import datetime
 
 # Initialize Faker
 fake = Faker()
@@ -41,7 +41,7 @@ na_regions = [
 def generate_sa_id_number(gender):
     # Generate valid South African ID number
     birth_year_prefix = random.randint(0, 99)  # Generate a random birth year prefix (YY format)
-    birth_year_suffix = datetime.datetime.now().year % 100  # Get the current year suffix (YY format)
+    birth_year_suffix = datetime.now().year % 100  # Get the current year suffix (YY format)
     birth_month = random.randint(1, 12)  # Generate a random birth month
     birth_day = random.randint(1, 28)  # Generate a random birth day
     if gender == "Female":
@@ -55,7 +55,17 @@ def generate_sa_id_number(gender):
     
     is_citizen = True if citizenship == 0 else False
 
-    return id_number, is_citizen
+    # Calculate the age based on the first 6 digits (YYMMDD) of the ID number
+    birth_date_str = id_number[:6]
+    birth_date_obj = datetime.strptime(birth_date_str, "%y%m%d")
+    today = datetime.today()
+    age = today.year - birth_date_obj.year
+    
+    # Adjust the age if the birthday hasn't occurred yet this year
+    if today.month < birth_date_obj.month or (today.month == birth_date_obj.month and today.day < birth_date_obj.day):
+        age -= 1
+
+    return id_number, is_citizen, age
 
 def generate_na_id_number(gender):
     # Generate valid Namibian ID number
@@ -111,7 +121,7 @@ data = []
 # Loop through range up to 100
 for val in range(100):
     gender = fake.random_element(["Female", "Male"])  # Randomly choose a gender
-    id_number, is_citizen = generate_sa_id_number(gender)
+    id_number, is_citizen, age = generate_sa_id_number(gender)
     item = {
         "ID": id_number,  # Generate a unique and valid South African ID number based on gender
         "Name": fake.first_name_female() if gender == "Female" else fake.first_name_male(),
@@ -125,7 +135,8 @@ for val in range(100):
         "Province": generate_province(),  # Generate a random province
         "PostalCode": generate_postal_code(),  # Generate a random postal code
         "Gender": gender,  # Add the gender to the item object
-        "isCitizen": is_citizen  # Add the isCitizen boolean field
+        "isCitizen": is_citizen,  # Add the isCitizen boolean field
+        "Age": age  # Add the age field
     }
     data.append(item)
 
