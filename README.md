@@ -3,6 +3,8 @@ Python script for generating fake data for testing using [Faker](https://faker.r
 
 Generates 100 each of SA and Namabian test objects into JSON output
 
+## Note that this data is used for testing purposes only!
+
 ## Example Output
 
 ```
