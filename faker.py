@@ -48,12 +48,14 @@ def generate_sa_id_number(gender):
         random_gender_digits = str(random.randint(0, 4999)).zfill(4)  # Generate 4 random digits for females
     else:
         random_gender_digits = str(random.randint(5000, 9999)).zfill(4)  # Generate 4 random digits for males
-    citizenship = str(random.randint(0, 1)).zfill(1)  # Generate 1 digits for (Either 0 or 1)
+    citizenship = random.randint(0, 1)  # Generate 1 digit for citizenship (either 0 or 1)
     checksum = str(random.randint(0, 99)).zfill(2)  # Generate 2 digits for checksum
 
     id_number = f"{birth_year_prefix:02}{birth_month:02}{birth_day:02}{random_gender_digits}{citizenship}{checksum}"
+    
+    is_citizen = True if citizenship == 0 else False
 
-    return id_number
+    return id_number, is_citizen
 
 def generate_na_id_number(gender):
     # Generate valid Namibian ID number
@@ -109,8 +111,9 @@ data = []
 # Loop through range up to 100
 for val in range(100):
     gender = fake.random_element(["Female", "Male"])  # Randomly choose a gender
+    id_number, is_citizen = generate_sa_id_number(gender)
     item = {
-        "ID": generate_sa_id_number(gender),  # Generate a unique and valid South African ID number based on gender
+        "ID": id_number,  # Generate a unique and valid South African ID number based on gender
         "Name": fake.first_name_female() if gender == "Female" else fake.first_name_male(),
         "Lastname": fake.last_name(),
         "PhoneNumber": generate_phone_number(),  # Generate a phone number with 9 digits and no special characters
@@ -121,22 +124,9 @@ for val in range(100):
         "AccountBalance": generate_account_balance(),  # Generate an account balance
         "Province": generate_province(),  # Generate a random province
         "PostalCode": generate_postal_code(),  # Generate a random postal code
-        "Gender": gender  # Add the gender to the item object
+        "Gender": gender,  # Add the gender to the item object
+        "isCitizen": is_citizen  # Add the isCitizen boolean field
     }
-    id_number = item["ID"]
-    birth_year_prefix = int(id_number[:2])
-    birth_year_suffix = datetime.datetime.now().year % 100
-    birth_year = birth_year_prefix + birth_year_suffix
-    birth_month = int(id_number[2:4])
-    birth_day = int(id_number[4:6])
-    current_year = datetime.datetime.now().year
-    current_month = datetime.datetime.now().month
-    current_day = datetime.datetime.now().day
-    birth_date = datetime.date(birth_year, birth_month, birth_day)
-    age = current_year - birth_year
-    if current_month < birth_month or (current_month == birth_month and current_day < birth_day):
-        age -= 1
-    item["Age"] = age if age > 0 and age <= 120 else None
     data.append(item)
 
 # Write data to JSON file
