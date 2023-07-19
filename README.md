@@ -1,3 +1,5 @@
+![Status](https://github.com/jcopperman/python-data-faker/actions/workflows/python-app.yml/badge.svg)
+
 # python-data-faker
 Python script for generating fake data for testing using [Faker](https://faker.readthedocs.io/en/master/) including valid SA & Namabian ID numbers, VISA and Mastercard test credit card numbers and formatted South African phone numbers, provinces and regions (region dependant, returns ```null``` if not valid for Country).
 
