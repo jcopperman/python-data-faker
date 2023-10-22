@@ -48,9 +48,9 @@ jobs:
       - name: Send Webhook
         if: always()  # Ensure this step runs even if previous steps fail.
         run: |
-          curl -X POST \
-            -H "Content-Type: application/json" \
-            -d '{"status": "${{ steps.workflow-status.outputs.status }}"}' \
+           curl -X POST \
+             -H "Content-Type: application/json" \
+             -d "{\"status\": \"${{ steps.workflow-status.outputs.status }}\"}" \
             https://6986-165-73-110-60.ngrok-free.app/webhook
 
 
