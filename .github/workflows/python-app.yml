@@ -36,22 +36,6 @@ jobs:
           flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      - name: Set Workflow Status
-        id: workflow-status
-        run: |
-          status=$(curl -s -X GET \
-          -H "Accept: application/vnd.github.v3+json" \
-          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-          "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}" | jq -r '.status')
 
-          echo "::set-output name=status::$status"
-      - name: Send Webhook
-        if: always()  # Ensure this step runs even if previous steps fail.
-        run: |
-           curl -X POST \
-             -H "Content-Type: application/json" \
-             -d "{\"status\": \"${{ steps.workflow-status.outputs.status }}\"}" \
-            https://6986-165-73-110-60.ngrok-free.app/webhook
-         done
 
 
