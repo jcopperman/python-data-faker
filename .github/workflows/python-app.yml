@@ -10,7 +10,7 @@ on:
   workflow_run:
     workflows: ["Raspberry Pi Build Light"]  
     types:
-      - completed
+      - requested
 
 permissions:
   contents: read
