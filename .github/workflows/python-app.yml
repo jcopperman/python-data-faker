@@ -48,8 +48,6 @@ jobs:
       - name: Send Webhook
         if: always()  # Ensure this step runs even if previous steps fail.
         run: |
-         while true; do
-           sleep 5
            curl -X POST \
              -H "Content-Type: application/json" \
              -d "{\"status\": \"${{ steps.workflow-status.outputs.status }}\"}" \
