@@ -4,7 +4,7 @@ import random
 from datetime import datetime
 
 # Initialize Faker
-fake = Faker21()
+fake = Faker()
 Faker.seed(1234)  # Set the seed for Faker
 
 # List of South African provinces
