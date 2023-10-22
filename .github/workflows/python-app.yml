@@ -51,6 +51,6 @@ jobs:
           curl -X POST \
             -H "Content-Type: application/json" \
             -d '{"status": "${{ steps.workflow-status.outputs.status }}"}' \
-            https://8785-165-73-110-60.ngrok-free.app/webhook
+            https://6986-165-73-110-60.ngrok-free.app/webhook
 
 
